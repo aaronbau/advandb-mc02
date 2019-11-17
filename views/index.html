@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/query.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#" onclick="defaultQuery()">Aquatic Production</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="drillDown()">Drill-down</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="rollUp()">Roll-up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#slice">Slice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#dice">Dice</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="content" style="margin-top: 40px;" class="d-flex p-2 justify-content-center"></div>
+
+       <form action="/slice" method="post" id="sliceForm">
+        <div class="modal fade" id="slice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Slice</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Location</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1" id="sliceLocation">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="slice()" id="btnSlice">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form action="/dice" method="post" id="diceForm">
+        <div class="modal fade" id="dice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Dice</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Location</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1" id="diceLocation" name="diceLocation">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Fish Type</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Fish Type" aria-label="Location" aria-describedby="basic-addon1" id="diceType" name="diceType">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="dice()" id="btnDice">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+</body>
+</html>
